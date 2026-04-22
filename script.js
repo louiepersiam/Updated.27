@@ -81,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => createConfettiCannon(60, 0.2), 1000); // Third burst
 
         // --- Rising Balloons ---
-        createBalloons(30);
+        createBalloons(500);
 
         // --- Background Fireworks (Subtle) ---
-        createFireworks(100); // Number of firework bursts
+        createFireworks(200); // Number of firework bursts
     }
 
     // --- Confetti Cannon Helper ---
