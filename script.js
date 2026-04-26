@@ -30,22 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton.addEventListener('click', () => {
         transitionToStep('step2');
         // Autoplay music (often requires user interaction first)
-        backgroundMusic.play().catch(error => {
-            console.log("Autoplay prevented:", error);
-            // Optionally, show a play button if autoplay fails
-        });
     });
 
     // --- Step 2: Envelope Interactions ---
+    // STEP 2 → STEP 3 (ENVELOPE CLICK = START MUSIC)
+    // STEP 2 → STEP 3 (ENVELOPE CLICK = MUSIC STARTS IMMEDIATELY)
     envelopeContainer.addEventListener('click', () => {
         envelopeContainer.classList.add('open');
-        envelopeContainer.querySelector('.click-instruction').style.opacity = '0'; // Hide instruction
+        envelopeContainer.querySelector('.click-instruction').style.opacity = '0';
+
+        // 🎵 START MUSIC HERE
+        backgroundMusic.play().catch(error => {
+            console.log("Autoplay prevented:", error);
+        });
+
         setTimeout(() => {
             transitionToStep('step3');
             setTimeout(() => {
                 document.getElementById('letterContainer').classList.add('show');
-            }, 100); // Small delay for letter reveal animation
-        }, 700); // Duration matches envelope flap animation
+            }, 100);
+        }, 700);
     });
 
     unfoldButton.addEventListener('click', () => {
