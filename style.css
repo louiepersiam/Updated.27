@@ -20,6 +20,7 @@
     --shadow-heavy: rgba(0, 0, 0, 0.5);
 }
 
+<<<<<<< HEAD
 /* 🔥 FIXED layout: cake + slider */
 /* 🔥 FIXED layout: cake + slider */
 .cake-container {
@@ -75,6 +76,26 @@
 /* pause on hover */
 .photo-gallery:hover .photo-track {
     animation-play-state: paused;
+=======
+.photo-gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    /* keeps 1 row */
+    justify-content: center;
+    /* centers the whole row */
+    align-items: center;
+    /* aligns images vertically */
+    gap: 10px;
+    margin-top: 211px;
+}
+
+.photo-gallery img {
+    width: 150px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+>>>>>>> b6632a5ce8da75ed8db01a94f1daeb4d89f6379c
 }
 
 * {
@@ -83,6 +104,7 @@
     box-sizing: border-box;
 }
 
+/* add a  function header here to combine this two statement*/
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(45deg, var(--bg-dark), var(--bg-light));
