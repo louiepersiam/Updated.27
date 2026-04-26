@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const unfoldButton = document.getElementById('unfoldButton');
     const finalGreetingElement = document.getElementById('finalGreeting');
 
+
+
     const steps = {
         step1: document.getElementById('step1'),
         step2: document.getElementById('step2'),
@@ -46,19 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 700); // Duration matches envelope flap animation
     });
 
-    // --- Step 3: Letter Unfold Interactions ---
     unfoldButton.addEventListener('click', () => {
         transitionToStep('step4');
         startCelebrationAnimations();
-    });
 
+        // 🎵 Play music when surprise is opened
+        const music = document.getElementById('backgroundMusic');
+        music.play().catch(err => {
+            console.log("Music play blocked:", err);
+        });
+    });
     // --- Step 4: Grand Celebration Animations ---
     function startCelebrationAnimations() {
         // --- Typewriter Effect for Main Greeting ---
         let i = 0;
         finalGreetingElement.textContent = ''; // Clear content
         finalGreetingElement.style.borderRight = '3px solid var(--accent-yellow)'; // Ensure cursor is visible
-        
+
         const typingInterval = setInterval(() => {
             if (i < messageGreeting.length) {
                 finalGreetingElement.textContent += messageGreeting.charAt(i);
@@ -75,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => createConfettiCannon(60, 0.2), 1000); // Third burst
 
         // --- Rising Balloons ---
-        createBalloons(15);
+        createBalloons(50);
 
         // --- Background Fireworks (Subtle) ---
-        createFireworks(5); // Number of firework bursts
+        createFireworks(50); // Number of firework bursts
     }
 
     // --- Confetti Cannon Helper ---
@@ -99,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const delay = Math.random() * delayMultiplier;
             confetti.style.animationDuration = `${duration}s`;
             confetti.style.animationDelay = `${delay}s`;
-            
+
             // Randomize size and shape
             const size = Math.random() * 8 + 4; // 4-12px
             confetti.style.width = `${size}px`;
@@ -145,16 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < count; i++) {
             const firework = document.createElement('div');
             firework.classList.add('firework');
-            
+
             firework.style.left = `${Math.random() * 80 + 10}vw`;
             firework.style.bottom = `${Math.random() * 20}vh`; // Launch from bottom 20%
             firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             firework.style.boxShadow = `0 0 5px ${firework.style.backgroundColor}`; // Match box shadow to color
-            
+
             // Stagger animation delay
             const delay = Math.random() * 3; // 0-3 second delay
             firework.style.animationDelay = `${delay}s, ${delay + 3}s`; // Launch and then explode
-            
+
             fireworksContainer.appendChild(firework);
 
             firework.addEventListener('animationend', () => firework.remove());
